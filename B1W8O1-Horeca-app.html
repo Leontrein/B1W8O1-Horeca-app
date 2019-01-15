@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+   <title>B1W8O1-Horeca-app</title>
+</head>
+<body>
+  <h1>B1W8O1-Horeca-app</h1>
+
+  <script type="text/javascript">
+	var ober = true;
+	var menu = [
+				'fris',
+				'bier',
+				'wijn'
+	]
+	var price = [
+				2,
+				4,
+				10
+	]
+
+	var order = [];
+
+	while (ober === true) {
+		var takeOrder = prompt('Wilt u iets bestellen?');
+
+		if (takeOrder === 'ja') {
+			var whatToOrder = prompt('Wat wilt u betellen?, u heeft de keuze uit: ' +menu);
+			if(menu.indexOf(whatToOrder) > -1){
+				order.push(whatToOrder);
+				var amount = prompt('Hoeveel wilt u van '+ whatToOrder);
+				order.push(parseInt(amount));
+			}
+		}else if(takeOrder === 'nee'){
+			ober = false;
+			alert('Dank u wel, de rekening wordt voor u nu klaar gezet.')
+			calculateOrder()
+		}else {
+			alert('Error')
+		}
+	}
+	function calculateOrder() {
+		for (var i = 0; i < order.length; i+=2) {
+			document.write(order[i]+': aantal = '+order[i+1] + ' totaal: €'+ 
+				(order[i+1] * price[menu.indexOf(order[i])]))
+		}
+	}
+	/*while (bestelling != 'stop') {
+	var bestelling = prompt("Welke bestelling wilt u toevoegen?");
+	if (bestelling != "stop") {
+		var Fris = prompt("Hoeveel Fris wilt u toevoegen aan uw bestelling");
+		var Bier = prompt("Hoeveel Biertjes wilt u toevoegen aan uw bestelling?");
+		var Wijn = prompt("Hoeveel Wijn wilt u toevoegen aan uw bestelling?");
+	} else {
+		if (Fris > 0) {
+			document.write("Frisdrank: 2.99 x", Frisdrank ,"=" ,Frisdrank * 2.99);
+		}else{
+ 			document.write();
+		};
+		if (Bier > 0) {
+			document.write("Bier: 4.99 x", Bier ,"=" ,Bier * 4.99);
+		}else{
+			document.write();
+		};
+		if (Wijn > 0) {
+			document.write("Wijn: 3.49 x", Wijn ,"=" ,Wijn * 3.49);
+		}else{
+			document.write();
+		};
+		document.write("Totaal:", 2.99 * Large + 4.99 * Medium + 3.49 * Small);
+	};
+};*/ 
+</script>
+ </body>
+</html>
